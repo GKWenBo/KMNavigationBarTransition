@@ -94,6 +94,12 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
+#ifdef __IPHONE_15_0
+        if (@available(iOS 15.0, *)) {
+            self.navigationBar.scrollEdgeAppearance = appearingViewController.km_transitionBarAppearance;
+            self.navigationBar.standardAppearance = appearingViewController.km_transitionBarAppearance;
+        }
+#endif
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -112,6 +118,12 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
+#ifdef __IPHONE_15_0
+        if (@available(iOS 15.0, *)) {
+            self.navigationBar.scrollEdgeAppearance = viewController.km_transitionBarAppearance;
+            self.navigationBar.standardAppearance = viewController.km_transitionBarAppearance;
+        }
+#endif
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -131,6 +143,12 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
+#ifdef __IPHONE_15_0
+        if (@available(iOS 15.0, *)) {
+            self.navigationBar.scrollEdgeAppearance = rootViewController.km_transitionBarAppearance;
+            self.navigationBar.standardAppearance = rootViewController.km_transitionBarAppearance;
+        }
+#endif
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;

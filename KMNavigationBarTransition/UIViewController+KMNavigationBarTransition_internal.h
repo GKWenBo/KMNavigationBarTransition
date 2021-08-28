@@ -27,6 +27,10 @@
 
 @property (nonatomic, strong) UINavigationBar *km_transitionNavigationBar;
 
+#ifdef __IPHONE_15_0
+@property (nonatomic, strong) UINavigationBarAppearance *km_transitionBarAppearance API_AVAILABLE(ios(15.0));
+#endif
+
 - (void)km_addTransitionNavigationBarIfNeeded;
 
 @end

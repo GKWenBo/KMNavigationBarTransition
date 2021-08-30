@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/MoZhouqi/KMNavigationBarTransition.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/GKWenBo/KMNavigationBarTransition.git", :tag => s.version }
 
   s.source_files  = "KMNavigationBarTransition/*.{h,m}"
 

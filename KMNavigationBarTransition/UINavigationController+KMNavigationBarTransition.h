@@ -28,4 +28,6 @@
 // By default this is white, it is related to issue with transparent navigationBar
 - (UIColor *)km_containerViewBackgroundColor;
 
+- (void)adaptiOS15AppearanceNavigationBar:(UIViewController *)viewController;
+
 @end

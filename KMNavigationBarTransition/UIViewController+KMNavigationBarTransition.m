@@ -86,16 +86,9 @@
     }
     
     self.navigationController.km_backgroundViewHidden = NO;
-#ifdef __IPHONE_15_0
-    if (@available(iOS 15.0, *)) {
-        self.km_transitionBarAppearance.backgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-        self.km_transitionBarAppearance.shadowImage = self.navigationController.navigationBar.shadowImage;
-        self.km_transitionBarAppearance.backgroundColor = self.navigationController.navigationBar.barTintColor;
-        
-        self.navigationController.navigationBar.scrollEdgeAppearance = self.km_transitionBarAppearance;
-        self.navigationController.navigationBar.standardAppearance = self.km_transitionBarAppearance;
-    }
-#endif
+    
+    [self adaptiOS15AppearanceNavigationBar];
+    
     [self km_viewDidAppear:animated];
 }
 
@@ -269,5 +262,18 @@
     return appearance;
 }
 #endif
+
+- (void)adaptiOS15AppearanceNavigationBar {
+#ifdef __IPHONE_15_0
+    if (@available(iOS 15.0, *)) {
+        self.km_transitionBarAppearance.backgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+        self.km_transitionBarAppearance.shadowImage = self.navigationController.navigationBar.shadowImage;
+        self.km_transitionBarAppearance.backgroundColor = self.navigationController.navigationBar.barTintColor;
+        
+        self.navigationController.navigationBar.scrollEdgeAppearance = self.km_transitionBarAppearance;
+        self.navigationController.navigationBar.standardAppearance = self.km_transitionBarAppearance;
+    }
+#endif
+}
 
 @end

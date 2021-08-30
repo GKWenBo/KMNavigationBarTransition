@@ -94,12 +94,8 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-#ifdef __IPHONE_15_0
-        if (@available(iOS 15.0, *)) {
-            self.navigationBar.scrollEdgeAppearance = appearingViewController.km_transitionBarAppearance;
-            self.navigationBar.standardAppearance = appearingViewController.km_transitionBarAppearance;
-        }
-#endif
+        
+        [self adaptiOS15AppearanceNavigationBar:appearingViewController];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -118,12 +114,8 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-#ifdef __IPHONE_15_0
-        if (@available(iOS 15.0, *)) {
-            self.navigationBar.scrollEdgeAppearance = viewController.km_transitionBarAppearance;
-            self.navigationBar.standardAppearance = viewController.km_transitionBarAppearance;
-        }
-#endif
+
+        [self adaptiOS15AppearanceNavigationBar:viewController];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -143,12 +135,8 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-#ifdef __IPHONE_15_0
-        if (@available(iOS 15.0, *)) {
-            self.navigationBar.scrollEdgeAppearance = rootViewController.km_transitionBarAppearance;
-            self.navigationBar.standardAppearance = rootViewController.km_transitionBarAppearance;
-        }
-#endif
+
+        [self adaptiOS15AppearanceNavigationBar:rootViewController];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -183,6 +171,15 @@
 
 - (void)setKm_transitionContextToViewController:(UIViewController *)viewController {
     km_objc_setAssociatedWeakObject(self, @selector(km_transitionContextToViewController), viewController);
+}
+
+- (void)adaptiOS15AppearanceNavigationBar:(UIViewController *)viewController {
+#ifdef __IPHONE_15_0
+        if (@available(iOS 15.0, *)) {
+            self.navigationBar.scrollEdgeAppearance = viewController.km_transitionBarAppearance;
+            self.navigationBar.standardAppearance = viewController.km_transitionBarAppearance;
+        }
+#endif
 }
 
 @end

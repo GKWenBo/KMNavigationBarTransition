@@ -32,6 +32,7 @@ class MainViewController: UITableViewController {
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         if currentNavigationBarData == nil {
             currentNavigationBarData = NavigationBarData()

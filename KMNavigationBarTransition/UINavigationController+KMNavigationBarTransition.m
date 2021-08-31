@@ -28,6 +28,7 @@
 #import "KMWeakObjectContainer.h"
 #import <objc/runtime.h>
 #import "KMSwizzle.h"
+#import "UIViewController+KMNavigationBarTransition.h"
 
 @implementation UINavigationController (KMNavigationBarTransition)
 
@@ -95,7 +96,7 @@
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
         
-        [self adaptiOS15AppearanceNavigationBar:appearingViewController];
+        [appearingViewController km_adaptiOS15AppearanceNavigationBar:appearingNavigationBar];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -114,8 +115,7 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-
-        [self adaptiOS15AppearanceNavigationBar:viewController];
+        [viewController km_adaptiOS15AppearanceNavigationBar:appearingNavigationBar];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -135,8 +135,8 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-
-        [self adaptiOS15AppearanceNavigationBar:rootViewController];
+        
+        [rootViewController km_adaptiOS15AppearanceNavigationBar:appearingNavigationBar];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -171,15 +171,6 @@
 
 - (void)setKm_transitionContextToViewController:(UIViewController *)viewController {
     km_objc_setAssociatedWeakObject(self, @selector(km_transitionContextToViewController), viewController);
-}
-
-- (void)adaptiOS15AppearanceNavigationBar:(UIViewController *)viewController {
-#ifdef __IPHONE_15_0
-        if (@available(iOS 15.0, *)) {
-            self.navigationBar.scrollEdgeAppearance = viewController.km_transitionBarAppearance;
-            self.navigationBar.standardAppearance = viewController.km_transitionBarAppearance;
-        }
-#endif
 }
 
 @end

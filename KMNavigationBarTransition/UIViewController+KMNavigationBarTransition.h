@@ -28,6 +28,6 @@
 @property (nonatomic, weak) UIScrollView *km_scrollView;
 
 /// 适配iOS15导航栏
-- (void)adaptiOS15AppearanceNavigationBar;
+- (void)km_adaptiOS15AppearanceNavigationBar:(UINavigationBar *)bar;
 
 @end

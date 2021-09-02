@@ -95,8 +95,6 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-        
-        [appearingViewController km_adaptiOS15AppearanceNavigationBar:appearingNavigationBar];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -115,7 +113,6 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-        [viewController km_adaptiOS15AppearanceNavigationBar:appearingNavigationBar];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;
@@ -135,8 +132,6 @@
         self.navigationBar.barTintColor = appearingNavigationBar.barTintColor;
         [self.navigationBar setBackgroundImage:[appearingNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         self.navigationBar.shadowImage = appearingNavigationBar.shadowImage;
-        
-        [rootViewController km_adaptiOS15AppearanceNavigationBar:appearingNavigationBar];
     }
     if (animated) {
         disappearingViewController.navigationController.km_backgroundViewHidden = YES;

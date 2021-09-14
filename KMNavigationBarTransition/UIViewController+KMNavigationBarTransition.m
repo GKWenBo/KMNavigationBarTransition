@@ -74,6 +74,7 @@
         self.navigationController.navigationBar.barTintColor = self.km_transitionNavigationBar.barTintColor;
         [self.navigationController.navigationBar setBackgroundImage:[self.km_transitionNavigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setShadowImage:self.km_transitionNavigationBar.shadowImage];
+        [self.navigationController.navigationBar setTitleTextAttributes:self.km_transitionNavigationBar.titleTextAttributes];
         
         /// 首页无fake bar或者有fake bar需适配iOS15
         [self km_adaptiOS15AppearanceNavigationBar:self.km_transitionNavigationBar];
@@ -148,6 +149,7 @@
     bar.shadowImage = self.navigationController.navigationBar.shadowImage;
     /// 兼容标题样式设置
     bar.titleTextAttributes = self.navigationController.navigationBar.titleTextAttributes;
+    
     [self.km_transitionNavigationBar removeFromSuperview];
     self.km_transitionNavigationBar = bar;
     [self km_resizeTransitionNavigationBarFrame];
@@ -245,11 +247,11 @@
 }
 
 #ifdef __IPHONE_15_0
-- (void)setKm_transitionBarAppearance:(UINavigationBarAppearance *)km_transitionBarAppearance {
+- (void)setKm_transitionBarAppearance:(UINavigationBarAppearance *)km_transitionBarAppearance API_AVAILABLE(ios(15.0)) {
     objc_setAssociatedObject(self, @selector(km_transitionBarAppearance), km_transitionBarAppearance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UINavigationBarAppearance *)km_transitionBarAppearance {
+- (UINavigationBarAppearance *)km_transitionBarAppearance API_AVAILABLE(ios(15.0)) {
     UINavigationBarAppearance *appearance = objc_getAssociatedObject(self, @selector(km_transitionBarAppearance));
     if (!appearance) {
         appearance = [[UINavigationBarAppearance alloc] init];
@@ -273,6 +275,7 @@
             self.km_transitionBarAppearance.shadowColor = [UIColor clearColor];
         }
         self.km_transitionBarAppearance.shadowImage = shadowImage;
+        
         if (bar.titleTextAttributes) {
             self.km_transitionBarAppearance.titleTextAttributes = bar.titleTextAttributes;
         }
